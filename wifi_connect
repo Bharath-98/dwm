@@ -1,0 +1,7 @@
+#!/usr/bin/sh
+
+
+nmcli device wifi list
+read -p "Enter the AP name : " ap
+nmcli device wifi connect $ap
+sleep(5)
