@@ -79,6 +79,9 @@ static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%"
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
 static const char *flameshot[] = {"flameshot", "gui", NULL};
+static const char *brightup[] = {"xbright", "+10", NULL};
+static const char *brightdown[] = {"xbright", "-10", NULL};
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -91,11 +94,13 @@ static Key keys[] = {
 	{ ALTKEY|ShiftMask,             XK_F5,     spawn,          {.v = reboot} },
 	{ ALTKEY|ShiftMask,             XK_F10,    spawn,          {.v = wifi }},
 
+	{ 0,                            XF86XK_MonBrightnessUp,   spawn, {.v = brightup} },
+	{ 0,                            XF86XK_MonBrightnessDown, spawn, {.v = brightdown } },
 
-	{ 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
-	{ 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
-	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
-	{ 0,                       Print,  spawn, {.v = flameshot}},
+	{ 0,                       	XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
+	{ 0,                       	XF86XK_AudioMute, spawn, {.v = mutevol } },
+	{ 0,                       	XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	{ 0,                       	Print,  spawn, {.v = flameshot}},
 
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
